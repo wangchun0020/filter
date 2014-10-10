@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+<link href="images/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery_1.8.3.min.js"></script>
+</head>
+<html>
+<body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		/*  focus事件
+		$("input").focus(function(){
+			$(this).css("border","2px solid #0CC");
+			});
+		$("input").blur(function(){
+			$(this).css("border","2px solid #0CC");
+			});
+		111
+		
+		*/
+		
+		$("#p1").keyup(function(){
+			$("#p2").val($("#p1").val());
+			
+			});
+		
+		});
+		
+			
+			
+			function showtext() {  
+		if($("#password").val()=="") {  
+		$("#pwd_warpper").html("<input type=\"text\" value=\"请输入密码\"   name=\"pp1\"  id=\"_password\" onfocus=\"showpassword();\" style=\"width:150px;height:24px;\"/>");  
+		}  
+	}  
+	  
+	function showpassword() {  
+		$("#pwd_warpper").html("<input type=\"password\" value=\"\"  name=\"pp2\"  id=\"password\" onblur=\"showtext();\" style=\"width:150px;height:24px;\"/>");  
+		/** 
+		这里为什么要用setTimeout，因为ie比较傻，刚创建完对象，你直接设置焦点 
+		在ie下是不会响应的，你必须留出时间给ie缓冲下，所以加上了这个定时器 
+		**/  
+		setTimeout(function(){  
+		$("#password").focus();  
+		},20);  
+	}  
+	  
+	$(function(){  
+		var usernameDefStr = $("#username").val();  
+		$("#username").focus(function(){  
+			if($(this).val()==usernameDefStr)  
+				$(this).val("");  
+		});  
+		$("#username").blur(function(){  
+			if($(this).val()=="")  
+				$(this).val(usernameDefStr);  
+		});  
+		  
+	});  
+		
+</script>
+
+    <p>我是第一个，点我！</p>
+    <p>我是第二个，点我！</p>
+    <p>我是第三个，点我！</p>
+    <form method="get">
+    <input type="text" id="n1" name="nn1" value=""  style="border:1px solid #ccc;" />
+    <input type="text" id="p1" name="np1"  value="" style="border:1px solid #ccc;" />
+    <input  id="p2" name="np2" type="hidden" />
+   
+    
+    
+    
+    <input type="text" value="邮箱/会员账号/手机号" id="username" name="nn1" style="width:150px;height:24px;"/>  
+<div id="pwd_warpper" style="width:150px;height:24px;">  
+<input type="text" value="请输入密码" id="_password" name="pp1" onfocus="showpassword();" style="width:150px;height:24px;"/>  
+</div>  
+ <input type="submit" />
+    </form>
+</body>
+
+</html>
